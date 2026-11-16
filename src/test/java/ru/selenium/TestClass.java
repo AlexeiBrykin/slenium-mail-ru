@@ -34,7 +34,6 @@ public class TestClass {
         notARobot(driver, wait);
         skipOtp();
         enterPass(driver, wait);
-
         wait.until(ExpectedConditions.titleContains("Входящие - Почта Mail"));
     }
 
