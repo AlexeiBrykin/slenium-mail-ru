@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,11 +16,15 @@ import static ru.selenium.LoginHelper.*;
 public class TestClass {
     private WebDriver driver;
     private WebDriverWait wait;
+    private ChromeOptions chromeOptions;
 
     @BeforeEach
     public void start() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        chromeOptions =  new ChromeOptions();
+        chromeOptions.addArguments("--start-maximized");
+        driver = new ChromeDriver(chromeOptions);
+        //driver = new ChromeDriver();
+        //driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
