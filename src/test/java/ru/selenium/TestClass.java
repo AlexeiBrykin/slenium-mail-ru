@@ -1,32 +1,10 @@
 package ru.selenium;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-
 import static ru.selenium.LoginHelper.*;
 
-public class TestClass {
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private ChromeOptions chromeOptions;
-
-    @BeforeEach
-    public void start() {
-        chromeOptions =  new ChromeOptions();
-        chromeOptions.addArguments("--start-maximized");
-        driver = new ChromeDriver(chromeOptions);
-        //driver = new ChromeDriver();
-        //driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
+public class TestClass extends BaseTest {
 
     @Test
     public void checkLogin() throws InterruptedException {
@@ -38,10 +16,5 @@ public class TestClass {
         skipOtp();
         enterPass(driver, wait);
         wait.until(ExpectedConditions.titleContains("Входящие - Почта Mail"));
-    }
-
-    @AfterEach
-    public void shutdown() {
-        //if (driver != null) driver.quit();
     }
 }
